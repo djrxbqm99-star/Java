@@ -83,21 +83,7 @@ public class SetTest {
 		scores.add(70);
 		scores.add(70);
 		
-		System.out.println(scores);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		System.out.println(scores); // TreeSet이라고 하면 자동 오름차순 정렬 
 		
 
 	}
