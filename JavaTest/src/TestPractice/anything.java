@@ -1,65 +1,41 @@
 package TestPractice;
 
-class Adder {
-
-    private static Adder instance = new Adder();
-
-    public static Adder getInstance() {
-        return instance;
-    }
-
-    Adder() {}
-
-    private Adder(int value) {
-        y += value;
-    }
-
-    private int x;
-    private int y;
-
-    public void add(int x, int y) {
-        this.x += x;
-        y++;
-    }
-
-    public void add(int[]arr) {
-        this.x += arr[0];
-        this.y += arr[1];
-    }
-
-    public static void add(Adder a2) {
-        a2.x += 10;
-    }
-
-    public static Adder add(Adder a3, int value) {
-        return new Adder(value);
-    }
-
-    public void show() {
-        System.out.println("----------");
-        System.out.println("x : " + x);
-        System.out.println("y : " + y);
-    }
-}
-
-
-
+/**
+ * 날짜 : 2026.05.11
+ * 이름 : 김민찬
+ * 내용 : throw와 throws 실습하기
+ */
 public class anything {
 
+    // 1. 돈을 이체하는 메서드 (throws를 통해 에러가 발생할 수 있음을 경고)
+    public void transfer(int money) throws Exception {
+        
+        if (money <= 0) {
+            // 2. 실제로 에러 객체를 생성해서 던짐 (throw)
+            throw new Exception("0원 이하는 보낼 수 없어요. 입력된 금액: " + money);
+        }
+        
+        System.out.println(money + "원 전송 완료!");
+    }
+
     public static void main(String[] args) {
+        anything test = new anything();
 
-        Adder a1 = new Adder();
-        a1.add(1, 2);
-        a1.show();
+        // 3. throws가 붙은 메서드를 호출할 때는 반드시 try-catch로 감싸야 합니다.
+        try {
+            System.out.println("--- 첫 번째 시도 (정상) ---");
+            test.transfer(5000); // 정상 작동
+            
+            System.out.println("\n--- 두 번째 시도 (에러 발생) ---");
+            test.transfer(-100); // 여기서 throw가 실행되어 catch 블록록으로 점프!
+            
+            System.out.println("이 코드는 실행되지 않습니다."); // 에러 발생 시 건너뜀
+            
+        } catch (Exception e) {
+            // 4. throw가 던진 에러 박스를 여기서 받아서 처리
+            System.err.println("에러 발생 메세지: " + e.getMessage());
+        }
 
-        int[] arr = {10, 20};
-        a1.add(arr);
-        a1.show();
-
-        Adder.add(a1);
-        a1.show();
-
-        a1 = Adder.add(a1, 3);
-        a1.show();
+        System.out.println("\n프로그램이 안전하게 종료되었습니다.");
     }
 }
