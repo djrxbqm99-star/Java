@@ -27,7 +27,7 @@ public class DeleteTest {
 				
 				// 3) SQL 실행
 				String sql = "DELETE FROM USER1 WHERE userid ='J101'";
-				stmt.executeUpdate(sql);
+				stmt.executeUpdate(sql); // INSERT, DELETE , UPDATE 쿼리만 사용
 				
 				// 4) SQL 결과처리(SELECT 작업일 경우)
 				
