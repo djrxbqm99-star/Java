@@ -7,7 +7,7 @@ import java.util.Scanner;
  * 내용 : 12장 JDBC PreparedStatement 실습
  * */
 
-public class PreparedInsertTest {
+public class PreparedTest {
 
    public static void main(String[] args) {
       System.out.println("데이터베이스 매니지먼트 프로그램");
@@ -27,7 +27,33 @@ public class PreparedInsertTest {
             exit = true;
             break;
          case 1:
-            System.out.println("입력 작업");
+            System.out.println("입력 작업 시작!!!");
+            
+            System.out.print("아이디 입력 : ");
+            String userid = sc.next();
+            
+            System.out.print("이름 입력 : ");
+            String name = sc.next();
+            
+            System.out.print("휴대폰 입력 : ");
+            String hp = sc.next();
+            
+            System.out.print("나이 입력 : ");
+            int age = sc.nextInt();
+            
+            User1DTO dto = new User1DTO();
+            dto.setUserid(userid);
+            dto.setName(name);
+            dto.setHp(hp);
+            dto.setAge(age);
+            
+            // 데이터베이스 저장
+            User1DAO.insert(dto);
+            
+            
+            
+            System.out.println("등록 성공!!!");
+            
             break;
          case 2:
             System.out.println("조회 작업");
