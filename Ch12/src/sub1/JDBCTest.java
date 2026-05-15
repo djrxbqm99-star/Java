@@ -18,7 +18,7 @@ public class JDBCTest {
 		String user = "djrxbqm99";
 		String pass = "1234";
 		
-		// 1) 드라이버 로드
+		// 1) 드라이버 로드(생략가능)
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
